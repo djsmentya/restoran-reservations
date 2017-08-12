@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @restoran.name %>
+</p>
+
+<p>
+  <strong>Weeks:</strong>
+  <%= @restoran.weeks %>
+</p>
+
+<p>
+  <strong>Hours,:</strong>
+  <%= @restoran.hours, %>
+</p>
+
+<p>
+  <strong>Minutes:</strong>
+  <%= @restoran.minutes %>
+</p>
+
+<%= link_to 'Edit', edit_restoran_path(@restoran) %> |
+<%= link_to 'Back', restorans_path %>

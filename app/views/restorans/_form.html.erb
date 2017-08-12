@@ -1,0 +1,37 @@
+<%= form_with(model: restoran, local: true) do |form| %>
+  <% if restoran.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(restoran.errors.count, "error") %> prohibited this restoran from being saved:</h2>
+
+      <ul>
+      <% restoran.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :restoran_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weeks %>
+    <%= form.text_field :weeks, id: :restoran_weeks %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hours, %>
+    <%= form.text_field :hours,, id: :restoran_hours, %>
+  </div>
+
+  <div class="field">
+    <%= form.label :minutes %>
+    <%= form.text_field :minutes, id: :restoran_minutes %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
