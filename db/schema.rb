@@ -10,27 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170812092704) do
+ActiveRecord::Schema.define(version: 20170812095524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "reservations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "from"
+    t.datetime "to"
+    t.bigint "table_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["table_id"], name: "index_reservations_on_table_id"
+  end
 
   create_table "restorans", force: :cascade do |t|
     t.string "name"
     t.string "weeks"
     t.string "hours"
-    t.string "minutes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "from_hour"
+    t.integer "from_minutes"
+    t.integer "to_hour"
+    t.integer "to_minutes"
   end
 
-  create_table "tabels", force: :cascade do |t|
+  create_table "tables", force: :cascade do |t|
     t.string "name"
     t.bigint "restoran_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["restoran_id"], name: "index_tabels_on_restoran_id"
+    t.index ["restoran_id"], name: "index_tables_on_restoran_id"
   end
 
-  add_foreign_key "tabels", "restorans"
+  add_foreign_key "reservations", "tables"
+  add_foreign_key "tables", "restorans"
 end
